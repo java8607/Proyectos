@@ -1,0 +1,5 @@
+package com.almundo.dto;
+
+public class Person {
+
+}

@@ -1,0 +1,24 @@
+package com.almundo.callcenter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.almundo.dto.Director;
+import com.almundo.dto.IEmployee;
+import com.almundo.dto.Operator;
+import com.almundo.dto.Supervisor;
+import com.almundo.utils.Property;
+
+public class Dispatcher {
+
+	public Dispatcher() {
+	}
+
+	public boolean dispatchCall() {
+
+		return true;
+	}
+
+
+
+}

@@ -1,0 +1,27 @@
+package com.almundo.dto;
+
+public class Operator extends Person  implements IEmployee{
+	
+	private boolean avaible;
+	
+	public Operator(int name) {
+		setName("Operator "+name);
+	}
+	
+	public void escalateCall() {		
+	}
+
+	public void takeCall() {
+	}
+
+	public boolean isAvaible() {
+		return avaible;
+	}
+
+	public void setAvaible(boolean avaible) {
+		this.avaible = avaible;
+	}
+	
+	
+
+}

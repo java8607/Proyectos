@@ -1,0 +1,59 @@
+package com.almundo.callcenter;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
+import com.almundo.dto.Director;
+import com.almundo.dto.Operator;
+import com.almundo.dto.Employee;
+import com.almundo.dto.Supervisor;
+import com.almundo.utils.Property;
+
+public class EmployeeFactory {
+
+	public static List<Employee> operators;
+	public static List<Employee> supervisors;
+	public static List<Employee> directors;
+
+	public EmployeeFactory() {
+		operators=new ArrayList<Employee>();		
+		addEmployees(Property.OPERATOR);
+		supervisors=new ArrayList<Employee>();
+		addEmployees(Property.SUPERVISOR);
+		directors=new ArrayList<Employee>();
+		addEmployees(Property.DIRECTOR);
+	}
+
+	private void addEmployees(Property typeEmployee) {
+		Employee employee = null;
+
+		for (int i = 0; i < typeEmployee.getQuantity(); i++) {
+			if (typeEmployee.equals(Property.DIRECTOR)) {
+				employee = new Director(i+1);
+				directors.add(employee);
+			} else if (typeEmployee.equals(Property.SUPERVISOR)) {
+				employee = new Supervisor(i+1);
+				supervisors.add(employee);
+			} else if (typeEmployee.equals(Property.OPERATOR)) {
+				employee = new Operator(i+1);
+				operators.add(employee);
+			}
+		}
+	}
+	
+	public static Predicate<Employee> isAvaibleToAnswer() {
+		return p -> p.isAvaible();
+	}
+	
+	public static Predicate<Employee> isAvaibleToEnd() {
+		return p -> !p.isAvaible();
+	}
+
+	public static List<Employee> filterEmployees(List<Employee> employees,
+			Predicate<Employee> predicate) {
+		return employees.stream().filter(predicate)
+				.collect(Collectors.<Employee> toList());
+	}
+}

@@ -1,0 +1,12 @@
+package com.almundo.callcenter;
+
+
+/**
+ * @author Oscar Rodríguez
+ *
+ */
+public class App {
+	public static void main(String args[]) {
+		new CallSimulator();
+	}
+}

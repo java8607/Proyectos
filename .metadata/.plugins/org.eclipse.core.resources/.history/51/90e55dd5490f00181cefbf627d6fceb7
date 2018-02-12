@@ -1,0 +1,45 @@
+package com.almundo.callcenter;
+
+import java.util.Random;
+
+import org.apache.log4j.Logger;
+
+public class CallSimulator extends Thread {
+	
+	private final static Logger log = Logger.getLogger(CallSimulator.class);
+
+
+	public final static int NUMEROLLAMADAS = 20;
+
+	public CallSimulator() {
+		PropertyConfigurator.configure("log4j.properties");
+		ejecutarSimulacion();
+	}
+	
+	public CallSimulator(String str) {
+		super(str);
+	}
+
+	public void ejecutarSimulacion() {
+
+		for (int i = 0; i < NUMEROLLAMADAS; i++) {
+			new CallSimulator("Llamada:::#" + i).start();
+		}
+	}
+
+	public void run() {
+		for (int i = 0; i < 5; i++) {
+			System.out.println("Inicia llamada " + i + ": " + getName());
+			try {
+					sleep(duracionLlamadaAleatorea());	
+			} catch (InterruptedException e) {
+			}
+		}
+		log.info("Fin de la llamada"+getName());
+	}
+	
+	public int duracionLlamadaAleatorea(){
+		int duracionLlamada = new Random().nextInt(5000)+5000;
+		return  duracionLlamada;
+	}
+}

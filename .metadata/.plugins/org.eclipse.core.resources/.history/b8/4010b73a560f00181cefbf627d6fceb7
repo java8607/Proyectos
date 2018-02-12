@@ -1,0 +1,15 @@
+package com.almundo.dto;
+
+public class Operator  implements IEmployee{
+
+	public void escalarLlamada() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void asignarLlamada() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

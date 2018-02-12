@@ -1,0 +1,8 @@
+package com.almundo.dto;
+
+public class Operator  implements IEmployee{
+
+
+	}
+
+}

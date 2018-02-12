@@ -1,0 +1,13 @@
+package com.almundo.dto;
+
+public class Director implements IEmployee{
+
+	public void escalateCall() {
+		
+	}
+
+	public void takeCall() {
+		
+	}
+
+}

@@ -1,0 +1,17 @@
+package com.almundo.dto;
+
+public class Supervisor extends Person implements IEmployee{
+
+	public Supervisor(String name) {
+		setName("Supervisor "+name);
+	}
+	
+	public void escalateCall() {
+		
+	}
+
+	public void takeCall() {
+		
+	}
+
+}

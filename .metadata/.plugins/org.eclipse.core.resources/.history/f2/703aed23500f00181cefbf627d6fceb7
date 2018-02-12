@@ -1,0 +1,29 @@
+package com.almundo.utils;
+
+public enum Propiedad {
+
+	NUMEROEMPLEADOS(),NUMEROLLAMADAS;
+	
+	private String valor;
+	private int llave;
+	
+	private Propiedad(String valor, String llave) {
+		this.valor = valor;
+		this.llave = llave;
+	}
+	
+	public String getValor() {
+		return valor;
+	}
+	public void setValor(String valor) {
+		this.valor = valor;
+	}
+	public int getLlave() {
+		return llave;
+	}
+	public void setLlave(int llave) {
+		this.llave = llave;
+	}
+	
+	
+}

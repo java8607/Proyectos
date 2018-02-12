@@ -1,0 +1,20 @@
+package com.almundo.dto;
+
+public class Person {
+	private String name;
+	private boolean avaible;
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public boolean isAvaible() {
+		return avaible;
+	}
+	public void setAvaible(boolean avaible) {
+		this.avaible = avaible;
+	}
+	
+	
+}

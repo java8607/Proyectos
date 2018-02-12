@@ -1,0 +1,21 @@
+package com.almundo.callcenter;
+
+import java.util.Random;
+
+/**
+ * @author Oscar Rodríguez
+ *
+ */
+public class App {
+	public static void main(String args[]) {
+		//new CallSimulator();
+		for(int i=0; i < 2000; i++){
+			int aleatoreo = new Random().nextInt(5000)+5000;
+			if(aleatoreo<10000 && aleatoreo>5000){
+				System.out.println("entre 5000 y 10000 ms");
+			}else{
+				System.out.println();
+			}
+		}
+	}
+}

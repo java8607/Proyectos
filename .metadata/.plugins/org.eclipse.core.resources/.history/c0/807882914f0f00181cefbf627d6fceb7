@@ -1,0 +1,5 @@
+package com.almundo.utils;
+
+public enum Propiedad {
+
+}

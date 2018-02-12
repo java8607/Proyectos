@@ -1,0 +1,41 @@
+package com.almundo.callcenter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.almundo.dto.IEmpleado;
+import com.almundo.dto.Operador;
+import com.almundo.utils.Propiedad;
+
+public class Dispatcher {
+
+	List<IEmpleado> empleados;
+	
+	public Dispatcher(){
+		empleados = new ArrayList<IEmpleado>();		
+	}
+	
+	public boolean dispatchCall(){
+		
+		return true;
+	}
+	
+	public List<IEmpleado> crearEmpleados(){
+		empleados = new ArrayList<IEmpleado>();	
+		
+		adicionarEmpleados(new Operador(), Propiedad.NUMEROOPERADORES);
+		
+		return empleados;
+	}
+	
+	public void adicionarEmpleados(Propiedad tipoEmpleado, int cantidadEmpleados){
+		IEmpleado empleado;
+		switch(tipoEmpleado.getCualitativo()){
+		case ""
+		}
+		for(int i = 0; i < cantidadEmpleados;i++){
+			empleado = tipoEmpleado;
+			empleados.add(empleado);
+		}
+	}
+}

@@ -1,0 +1,25 @@
+package com.almundo.dto;
+
+public class Operator  implements IEmployee{
+
+	private String nombre;
+	
+	public void escalateCall() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void takeCall() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}	
+
+}

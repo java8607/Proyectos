@@ -1,0 +1,47 @@
+package com.almundo.callcenter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.almundo.dto.Director;
+import com.almundo.dto.IEmployee;
+import com.almundo.dto.Operator;
+import com.almundo.dto.Supervisor;
+import com.almundo.utils.Property;
+
+public class Dispatcher {
+
+	private List<IEmployee> staff;
+
+	public Dispatcher() {
+		staff = new ArrayList<IEmployee>();
+	}
+
+	public boolean dispatchCall() {
+
+		return true;
+	}
+
+	public List<IEmployee> crearEmpleados() {
+		staff = new ArrayList<IEmployee>();
+		adicionarEmpleados(Property.DIRECTOR);
+		adicionarEmpleados(Property.SUPERVISOR);
+		adicionarEmpleados(Property.OPERATOR);
+		return staff;
+	}
+
+	public void adicionarEmpleados(Property typeEmployee) {
+		IEmployee employee = null;
+
+		for (int i = 0; i < typeEmployee.getQuantity(); i++) {
+			if (typeEmployee.equals(Property.DIRECTOR)) {
+				employee = new Director();
+			} else if (typeEmployee.equals(Property.SUPERVISOR)) {
+				employee = new Supervisor();
+			} else if (typeEmployee.equals(Property.OPERATOR)) {
+				employee = new Operator();
+			}
+			staff.add(employee);
+		}
+	}
+}

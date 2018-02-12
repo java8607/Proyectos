@@ -1,0 +1,51 @@
+package com.almundo.callcenter;
+
+import java.util.List;
+
+import com.almundo.dto.Employee;
+
+public class Dispatcher {
+
+	public Dispatcher() {
+	}
+
+	public boolean dispatchCall() {
+		List<Employee> operators = EmployeeFactory.filterEmployees(
+				EmployeeFactory.operators, EmployeeFactory.isAvaibleToAnswer());
+		
+		List<Employee> supervisors = EmployeeFactory.filterEmployees(
+				EmployeeFactory.supervisors,
+				EmployeeFactory.isAvaibleToAnswer());
+		
+		List<Employee> directors = EmployeeFactory.filterEmployees(
+				EmployeeFactory.directors,
+				EmployeeFactory.isAvaibleToAnswer());
+		
+		if (!operators.isEmpty()) {
+			for(int i = 0; i < EmployeeFactory.operators.size();i++){
+				if(EmployeeFactory.operators.get(i).isAvaible()){
+					EmployeeFactory.operators.get(i).setAvaible(false);
+					break;
+				}
+			}
+		} else if(!supervisors.isEmpty()){
+			for(int i = 0; i < EmployeeFactory.supervisors.size();i++){
+				if(EmployeeFactory.supervisors.get(i).isAvaible()){
+					EmployeeFactory.supervisors.get(i).setAvaible(false);
+					break;
+				}
+			}
+		}else if(!directors.isEmpty()){
+			for(int i = 0; i < EmployeeFactory.directors.size();i++){
+				if(EmployeeFactory.directors.get(i).isAvaible()){
+					EmployeeFactory.directors.get(i).setAvaible(false);
+					break;
+				}
+			}
+		}else{
+			dispatchCall();
+		}
+		return true;
+	}
+
+}

@@ -1,0 +1,23 @@
+package com.almundo.utils;
+
+public enum Propiedad {
+
+	NUMEROEMPLEADOS("Cantidad empleados",30),
+	NUMEROLLAMADAS("Cantidad llamadas", 20);
+
+	private String cualitativo;
+	private int cuantitativo;
+
+	private Propiedad(String llave, int valor) {
+		this.cuantitativo = valor;
+		this.cualitativo = llave;
+	}
+
+	public String getLlave() {
+		return cualitativo;
+	}
+	public int getValor() {
+		return cuantitativo;
+	}
+
+}

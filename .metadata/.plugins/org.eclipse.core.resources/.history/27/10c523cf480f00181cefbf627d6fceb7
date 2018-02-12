@@ -1,0 +1,39 @@
+package com.almundo.callcenter;
+
+import java.util.Random;
+
+public class CallSimulator extends Thread {
+
+	public final static int NUMEROLLAMADAS = 20;
+
+	public CallSimulator() {
+		ejecutarSimulacion();
+	}
+	
+	public CallSimulator(String str) {
+		super(str);
+	}
+
+	public void ejecutarSimulacion() {
+
+		for (int i = 0; i < NUMEROLLAMADAS; i++) {
+			new CallSimulator("Llamada:::#" + i).start();
+		}
+	}
+
+	public void run() {
+		for (int i = 0; i < 5; i++) {
+			System.out.println("Loop " + i + ": " + getName());
+			try {
+					sleep(duracionLlamadaAleatorea());			
+			} catch (InterruptedException e) {
+			}
+		}
+		System.out.println("Fin de la lamada " + getName());
+	}
+	
+	public int duracionLlamadaAleatorea(){
+		int duracionLlamada = new Random().nextInt(5000)+5000;
+		return  duracionLlamada;
+	}
+}

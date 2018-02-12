@@ -1,0 +1,23 @@
+package com.almundo.utils;
+
+public enum Propiedad {
+
+	private String valor;
+	private int llave;
+	
+	
+	public String getValor() {
+		return valor;
+	}
+	public void setValor(String valor) {
+		this.valor = valor;
+	}
+	public int getLlave() {
+		return llave;
+	}
+	public void setLlave(int llave) {
+		this.llave = llave;
+	}
+	
+	
+}

@@ -1,0 +1,8 @@
+package com.almundo.dto;
+
+public interface IEmployee {
+
+	void escalarLlamada();
+	
+	void asignarLlamada();
+}

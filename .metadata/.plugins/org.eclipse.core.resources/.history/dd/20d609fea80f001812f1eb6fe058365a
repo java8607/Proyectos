@@ -1,0 +1,40 @@
+package com.almundo.callcenter;
+
+import java.util.List;
+
+import com.almundo.dto.Employee;
+
+public class Dispatcher {
+
+	public Dispatcher() {
+	}
+
+	public boolean dispatchCall() {
+		List<Employee> operators = EmployeeFactory.filterEmployees(
+				EmployeeFactory.operators, EmployeeFactory.isAvaibleToCall());
+		
+		List<Employee> supervisors = EmployeeFactory.filterEmployees(
+				EmployeeFactory.supervisors,
+				EmployeeFactory.isAvaibleToCall());
+		
+		List<Employee> directors = EmployeeFactory.filterEmployees(
+				EmployeeFactory.directors,
+				EmployeeFactory.isAvaibleToCall());
+		
+		if (!operators.isEmpty()) {
+			for(int i = 0; i < EmployeeFactory.operators.size();i++){
+				if(EmployeeFactory.operators.get(i).isAvaible()){
+					EmployeeFactory.operators.get(i).setAvaible(false);
+				}
+			}
+		} else if(!supervisors.isEmpty()){
+			
+		}else if(!directors.isEmpty()){
+			
+		}else{
+			dispatchCall();
+		}
+		return true;
+	}
+
+}

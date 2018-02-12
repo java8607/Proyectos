@@ -1,0 +1,30 @@
+package com.almundo.callcenter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.almundo.dto.IEmpleado;
+
+public class Dispatcher {
+
+	List<IEmpleado> empleados;
+	
+	public Dispatcher(){
+		empleados = new ArrayList<IEmpleado>();		
+	}
+	
+	public boolean dispatchCall(){
+		
+		return true;
+	}
+	
+	public List<IEmpleado> crearEmpleados(){
+		empleados = new ArrayList<IEmpleado>();	
+		
+		for(int ){
+			
+		}
+		
+		return empleados;
+	}
+}

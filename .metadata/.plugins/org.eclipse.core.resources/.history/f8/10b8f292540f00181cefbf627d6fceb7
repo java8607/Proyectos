@@ -1,0 +1,25 @@
+package com.almundo.utils;
+
+public enum Propiedad {
+
+	OPERADOR("Operadores",10),
+	SUPERVISOR("Supervisores",5),
+	DIRECTOR("Directores",2),
+	LLAMADA("Llamadas", 20);
+
+	private String descripcion;
+	private int cantidad;
+
+	private Propiedad(String cualitativo, int cuantitativo) {
+		this.descripcion= cualitativo;
+		this.cantidad  = cuantitativo;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+	public int getCantidad() {
+		return cantidad;
+	}
+
+}

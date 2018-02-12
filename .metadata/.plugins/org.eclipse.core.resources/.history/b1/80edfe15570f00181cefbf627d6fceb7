@@ -1,0 +1,15 @@
+package com.almundo.dto;
+
+public class Operator extends Person  implements IEmployee{
+	
+	public void escalateCall() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void takeCall() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

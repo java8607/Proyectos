@@ -1,0 +1,51 @@
+package com.almundo.callcenter;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
+
+import com.almundo.dto.Director;
+import com.almundo.dto.IEmployee;
+import com.almundo.dto.Operator;
+import com.almundo.dto.Supervisor;
+import com.almundo.utils.Property;
+
+public class EmployeeFactory {
+
+	public static List<IEmployee> staff;
+	
+	public EmployeeFactory() {
+		staff = createEmployees(); 
+	}
+	
+	private List<IEmployee> createEmployees() {
+		staff = new ArrayList<IEmployee>();
+		addEmployees(Property.DIRECTOR);
+		addEmployees(Property.SUPERVISOR);
+		addEmployees(Property.OPERATOR);
+		return staff;
+	}
+
+	private void addEmployees(Property typeEmployee) {
+		IEmployee employee = null;
+
+		for (int i = 0; i < typeEmployee.getQuantity(); i++) {
+			if (typeEmployee.equals(Property.DIRECTOR)) {
+				employee = new Director(i);
+			} else if (typeEmployee.equals(Property.SUPERVISOR)) {
+				employee = new Supervisor(i);
+			} else if (typeEmployee.equals(Property.OPERATOR)) {
+				employee = new Operator(i);
+			}
+			staff.add(employee);
+		}
+	}
+	
+	   public static Predicate<IEmployee> isAvaible(boolean avaible) {
+	        return p -> p.;
+	    }
+	     
+	    public static List<Employee> filterEmployees (List<Employee> employees, Predicate<Employee> predicate) {
+	        return employees.stream().filter( predicate ).collect(Collectors.<Employee>toList());
+	    }
+}

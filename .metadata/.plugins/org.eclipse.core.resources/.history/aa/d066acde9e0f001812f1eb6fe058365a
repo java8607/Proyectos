@@ -1,0 +1,8 @@
+package com.almundo.dto;
+
+public interface IEmployee {
+
+	void escalateCall();
+	
+	void takeCall();
+}

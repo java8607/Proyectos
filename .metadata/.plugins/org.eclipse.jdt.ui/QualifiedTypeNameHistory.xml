@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.util.Random"/>
+<fullyQualifiedTypeName name="org.apache.log4j.Logger"/>
+<fullyQualifiedTypeName name="org.apache.log4j.PropertyConfigurator"/>
+<fullyQualifiedTypeName name="org.apache.log4j.BasicConfigurator"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="com.almundo.dto.IEmpleado"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="com.almundo.callcenter.Dispatcher"/>
+<fullyQualifiedTypeName name="com.almundo.utils.Propiedad"/>
+<fullyQualifiedTypeName name="com.almundo.dto.Operador"/>
+<fullyQualifiedTypeName name="com.almundo.dto.Supervisor"/>
+<fullyQualifiedTypeName name="com.almundo.dto.Director"/>
+<fullyQualifiedTypeName name="com.almundo.callcenter.EmployeeFactory"/>
+</qualifiedTypeNameHistroy>

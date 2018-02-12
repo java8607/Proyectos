@@ -1,0 +1,13 @@
+package com.almundo.dto;
+
+public class Supervisor  implements IEmployee{
+
+	public void escalateCall() {
+		
+	}
+
+	public void takeCall() {
+		
+	}
+
+}
