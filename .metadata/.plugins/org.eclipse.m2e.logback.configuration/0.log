@@ -1132,3 +1132,7 @@
 2018-02-13 00:15:05,128 [Worker-29] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Oscar\Documents\GitHub\Proyectos\Callcenter\src\main\resources
 2018-02-13 00:15:05,128 [Worker-29] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2018-02-13 00:15:05,128 [Worker-29] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Oscar\Documents\GitHub\Proyectos\Callcenter\src\test\resources
+2018-02-13 01:18:20,242 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-02-13 01:18:20,243 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Oscar\Documents\GitHub\Proyectos\Callcenter\src\main\resources
+2018-02-13 01:18:20,244 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-02-13 01:18:20,244 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Oscar\Documents\GitHub\Proyectos\Callcenter\src\test\resources
