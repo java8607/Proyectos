@@ -1,0 +1,39 @@
+package com.almundo.callcenter;
+
+import java.util.List;
+
+import org.junit.Test;
+
+import com.almundo.dto.Employee;
+import com.almundo.utils.Property;
+
+import junit.framework.TestCase;
+
+/**
+ * Unit test for simple App.
+ */
+public class AppTest extends TestCase {
+
+	@Test
+	public void callsDoneVsAttended(){
+		int calls = 10;
+		int totalCalls=0;
+		
+		new CallSimulator();
+		
+		for(int i=0; i<Property.OPERATOR.getQuantity();i++){
+			totalCalls+=EmployeeFactory.operators.get(i).getCalls();
+		}
+		
+		for(int i=0; i<Property.SUPERVISOR.getQuantity();i++){
+			totalCalls+=EmployeeFactory.operators.get(i).getCalls();
+		}
+		
+		for(int i=0; i<Property.DIRECTOR.getQuantity();i++){
+			totalCalls+=EmployeeFactory.operators.get(i).getCalls();
+		}
+		
+		System.out.println(totalCalls);
+		assertEquals(10, 10);
+	}
+}

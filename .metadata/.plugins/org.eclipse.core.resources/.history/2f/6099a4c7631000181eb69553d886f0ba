@@ -1,0 +1,84 @@
+package com.almundo.callcenter;
+
+import java.util.List;
+
+import com.almundo.dto.Employee;
+import com.almundo.utils.Property;
+
+/**
+ * @author Ing. Oscar Rodríguez
+ * @version 1.0
+ */
+public class Dispatcher {
+
+	private Property typeEmployee;
+	private String nameEmployee;
+	private int indexEmployee;
+
+	public Dispatcher() {
+	}
+
+	public synchronized boolean dispatchCall(boolean state) throws NullPointerException {
+		List<Employee> operators;
+		List<Employee> supervisors;
+		List<Employee> directors;
+
+		operators = EmployeeFactory.filterEmployees(EmployeeFactory.operators,EmployeeFactory.isAvaibleToAnswer());
+		supervisors = EmployeeFactory.filterEmployees(EmployeeFactory.supervisors,EmployeeFactory.isAvaibleToAnswer());
+		directors = EmployeeFactory.filterEmployees(EmployeeFactory.directors,EmployeeFactory.isAvaibleToAnswer());
+
+		if (!operators.isEmpty()) {
+			setAvailability(Property.OPERATOR,	EmployeeFactory.operators.size(), state);
+		} else if (!supervisors.isEmpty()) {
+			setAvailability(Property.SUPERVISOR,EmployeeFactory.supervisors.size(), state);
+		} else if (!directors.isEmpty()) {
+			setAvailability(Property.DIRECTOR,EmployeeFactory.directors.size(), state);
+		} else {
+			return false;
+		}
+		return true;
+	}
+
+	public synchronized void endCall() throws NullPointerException {	
+		if (typeEmployee.equals(Property.OPERATOR)) {
+			EmployeeFactory.operators.get(indexEmployee).setAvaible(true);
+		} else if (typeEmployee.equals(Property.SUPERVISOR)) {
+			EmployeeFactory.supervisors.get(indexEmployee).setAvaible(true);
+		} else if (typeEmployee.equals(Property.DIRECTOR)) {
+			EmployeeFactory.directors.get(indexEmployee).setAvaible(true);
+		}
+	}
+
+	private void setAvailability(Property typeEmployee, int totalAvaible, boolean state) {
+		for (int i = 0; i < totalAvaible; i++) {
+			if (typeEmployee.equals(Property.DIRECTOR) && EmployeeFactory.directors.get(i).isAvaible() != state) {
+				EmployeeFactory.directors.get(i).setAvaible(state);
+				this.typeEmployee=Property.DIRECTOR;
+				nameEmployee = EmployeeFactory.directors.get(i).getName();
+				indexEmployee = i;
+				break;
+			} else if (typeEmployee.equals(Property.SUPERVISOR)	&& EmployeeFactory.supervisors.get(i).isAvaible() != state) {
+				EmployeeFactory.supervisors.get(i).setAvaible(state);
+				this.typeEmployee=Property.SUPERVISOR;
+				nameEmployee = EmployeeFactory.supervisors.get(i).getName();
+				indexEmployee = i;
+				break;
+			} else if (typeEmployee.equals(Property.OPERATOR) && EmployeeFactory.operators.get(i).isAvaible() != state) {
+				EmployeeFactory.operators.get(i).setAvaible(state);
+				this.typeEmployee=Property.OPERATOR;
+				nameEmployee = EmployeeFactory.operators.get(i).getName();
+				indexEmployee = i;
+				break;
+			}
+		}
+	}
+
+	public Property getTypeEmployee() {
+		return typeEmployee;
+	}
+
+	public String getNameEmployee() {
+		return nameEmployee;
+	}
+
+}

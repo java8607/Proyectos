@@ -1,0 +1,29 @@
+package com.almundo.utils;
+
+/**
+ * @author Ing. Oscar Rodríguez
+ * @version 1.0
+ * Esta clase contiene las propiedad generales de nuestro programa, en ella se determina 
+ */
+public enum Property {
+
+	OPERATOR(7),
+	SUPERVISOR(2),
+	DIRECTOR(1),
+	CALL(10);
+
+	private int quantity;
+
+	private Property(int quantity) {
+		this.quantity  = quantity;
+	}
+
+	/*
+	 * Getters
+	 */
+	
+	public int getQuantity() {
+		return quantity;
+	}
+
+}

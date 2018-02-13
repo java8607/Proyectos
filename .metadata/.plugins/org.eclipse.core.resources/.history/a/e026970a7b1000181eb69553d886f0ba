@@ -1,0 +1,141 @@
+package com.almundo.callcenter;
+
+import java.util.List;
+
+import com.almundo.dto.Employee;
+import com.almundo.utils.Property;
+
+/**
+ * @author Ing. Oscar Rodríguez
+ * @version 1.0
+ * Esta clase se encarga de asignar y terminar las llamadas a los empleados del Call Center
+ */
+public class Dispatcher {
+
+	//Esta variable de instacia se encarga de almacenar el tipo de empleado a quien se le asigno una llamada
+	private Property typeEmployee;
+	//Esta variable de instancia se encarga de almacenar el nombre del empleado a quien se le asigno una llamada
+	private String nameEmployee;
+	/*Esta variable de instancia se encarga de almacenar el indice del empleado al que se le asigno una llamada
+	  en la lista de empleados correspondiente*/
+	private int indexEmployee;
+
+	/**
+	 * Constructor de Dispatcher
+	 */
+	public Dispatcher() {
+	}
+
+	/**
+	 * Metodo encargado de asignar las llamadas a los empleados, es de tipo sincronizado para que los 
+	 * hilos no puedan acceder simultaneamente a él, se escalan las excepciones de tipo Nullpointer al
+	 * CallSimulator
+	 * @param state
+	 * @return
+	 * @throws NullPointerException
+	 */
+	public synchronized boolean dispatchCall(boolean state) throws NullPointerException {
+		//Esta lista contendrá los operadores disponibles para contestar una llamada
+		List<Employee> operators;
+		//Esta lista contendrá los supervisores disponibles para contestar una llamada
+		List<Employee> supervisors;
+		//Esta lista contendrá los directores disponibles para contestar una llamada
+		List<Employee> directors;
+
+		/*Llena las listas, filtrando solo los empleados que esten disponibles para contestar*/
+		operators = EmployeeFactory.filterEmployees(EmployeeFactory.operators,EmployeeFactory.isAvaibleToAnswer());
+		supervisors = EmployeeFactory.filterEmployees(EmployeeFactory.supervisors,EmployeeFactory.isAvaibleToAnswer());
+		directors = EmployeeFactory.filterEmployees(EmployeeFactory.directors,EmployeeFactory.isAvaibleToAnswer());
+
+		/*Si hay operadores disponibles ejecuta el metodo encargado de establer que un empleado 
+		 * se encuentra ocupado en una llamda*/
+		if (!operators.isEmpty()) {
+			setAvailability(Property.OPERATOR,	EmployeeFactory.operators.size(), state);
+			//Sino hay operadores disponibles realiza le asigna una llamada un supervisor
+		} else if (!supervisors.isEmpty()) {
+			setAvailability(Property.SUPERVISOR,EmployeeFactory.supervisors.size(), state);
+			//Sino hay supervisores disponibles realiza le asigna una llamada un director
+		} else if (!directors.isEmpty()) {
+			setAvailability(Property.DIRECTOR,EmployeeFactory.directors.size(), state);
+		} else {
+			/*Si no hay ningún empleado disponible retorna un false para que el metodo Dispatcher 
+			se vuelva a ejecutar hasta que un empleado quede disponible*/ 
+			return false;
+		}
+		//En caso de que la llamada sea asignada se retorna verdadero y prosigue con el proceso
+		return true;
+	}
+
+	/**
+	 * Finaliza una llamada es de tipo sincronizado para que los diferentes hilos no puedan acceder simultaneamente a él
+	 * escala las excepciones de tipo NullPointer a CallSimulator
+	 * @throws NullPointerException
+	 */
+	public synchronized void endCall() throws NullPointerException {	
+		//Clasifica la llamada, si fue asignada a un operador, supervisor o director se encarga de modificar su disponibilidad para que quede disponible
+		if (typeEmployee.equals(Property.OPERATOR)) {
+			EmployeeFactory.operators.get(indexEmployee).setAvaible(true);
+		} else if (typeEmployee.equals(Property.SUPERVISOR)) {
+			EmployeeFactory.supervisors.get(indexEmployee).setAvaible(true);
+		} else if (typeEmployee.equals(Property.DIRECTOR)) {
+			EmployeeFactory.directors.get(indexEmployee).setAvaible(true);
+		}
+	}
+
+	/**
+	 * Este metodo se encarga de modificar la disponibilidad de los empleados
+	 * @param typeEmployee
+	 * @param totalAvaible
+	 * @param state
+	 */
+	private void setAvailability(Property typeEmployee, int cantidadEmpleados, boolean state) {
+		//Este ciclo se encarga de recorrer los empleados
+		for (int i = 0; i < cantidadEmpleados; i++) {
+			/*Si el empleado a modificar su disponibilidad es director, supervisor o operador y su estado no es dirente
+			 *  del estado deseado se modifica el valor de la variable avaible*/
+			if (typeEmployee.equals(Property.DIRECTOR) && EmployeeFactory.directors.get(i).isAvaible() != state) {
+				EmployeeFactory.directors.get(i).setAvaible(state);
+				//Almacena el tipo de empleado al que se le asigno o finalizo la llamada
+				this.typeEmployee=Property.DIRECTOR;
+				//Almacena el tipo de empleado al que se le asigno o finalizo la llamada
+				nameEmployee = EmployeeFactory.directors.get(i).getName();
+				//Almacena el tipo de empleado al que se le asigno o finalizo la llamada
+				indexEmployee = i;
+				//Incrementa en uno la cantidad de llamadas recibidas
+				int calls = EmployeeFactory.directors.get(i).getCalls();
+				EmployeeFactory.directors.get(i).setCalls(calls++);
+				//Termina el ciclo for ya que no es necesario seguir iterando debido a que fue asignada o terminada la llamada.
+				break;
+			} else if (typeEmployee.equals(Property.SUPERVISOR)	&& EmployeeFactory.supervisors.get(i).isAvaible() != state) {
+				EmployeeFactory.supervisors.get(i).setAvaible(state);
+				this.typeEmployee=Property.SUPERVISOR;
+				nameEmployee = EmployeeFactory.supervisors.get(i).getName();
+				indexEmployee = i;
+				int calls = EmployeeFactory.supervisors.get(i).getCalls();
+				EmployeeFactory.supervisors.get(i).setCalls(calls++);
+				break;
+			} else if (typeEmployee.equals(Property.OPERATOR) && EmployeeFactory.operators.get(i).isAvaible() != state) {
+				EmployeeFactory.operators.get(i).setAvaible(state);
+				this.typeEmployee=Property.OPERATOR;
+				nameEmployee = EmployeeFactory.operators.get(i).getName();
+				indexEmployee = i;
+				int calls = EmployeeFactory.operators.get(i).getCalls();
+				EmployeeFactory.operators.get(i).setCalls(calls++);
+				break;
+			}
+		}
+	}
+
+	/*
+	 * Getters
+	 */
+	
+	public Property getTypeEmployee() {
+		return typeEmployee;
+	}
+
+	public String getNameEmployee() {
+		return nameEmployee;
+	}
+
+}

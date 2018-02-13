@@ -1,0 +1,24 @@
+package com.almundo.callcenter;
+
+import java.util.List;
+
+import org.junit.Test;
+
+import com.almundo.dto.Employee;
+
+import junit.framework.TestCase;
+
+/**
+ * Unit test for simple App.
+ */
+public class AppTest extends TestCase {
+
+	@Test
+	public void main(){
+		App a = new App();
+		a.main(null);
+		EmployeeFactory.operators;
+		operators.
+		assertEquals(, actual);
+	}
+}

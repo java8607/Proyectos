@@ -1,0 +1,35 @@
+package com.almundo.callcenter;
+
+import org.junit.Test;
+
+import com.almundo.utils.Property;
+
+import junit.framework.TestCase;
+
+/**
+* @author Ing. Oscar Rodríguez
+* @version 1.0
+*/
+public class AppTest extends TestCase {
+
+	@Test
+	public void callsDoneVsAttended(){
+		Integer calls = Property.CALL.getQuantity();
+		Integer totalCalls=0;
+		
+		new CallSimulator();
+		
+		for(int i=0; i<Property.OPERATOR.getQuantity();i++){
+			totalCalls+=EmployeeFactory.operators.get(i).getCalls();
+		}
+		
+		for(int i=0; i<Property.SUPERVISOR.getQuantity();i++){
+			totalCalls+=EmployeeFactory.operators.get(i).getCalls();
+		}
+		
+		for(int i=0; i<Property.DIRECTOR.getQuantity();i++){
+			totalCalls+=EmployeeFactory.operators.get(i).getCalls();
+		}
+		assertEquals(true, true);
+	}
+}

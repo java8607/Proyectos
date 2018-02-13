@@ -1,23 +1,32 @@
 package com.almundo.utils;
 
+/**
+ * @author Ing. Oscar Rodríguez
+ * @version 1.0
+ * Esta clase contiene las propiedad generales de nuestro programa, en ella se determina la cantidad
+ * de operadores, supervisores, directores y llamadas entrantes simultaneamente
+ */
 public enum Property {
+	//Cantidad de operadores
+	OPERATOR(7),
+	//Cantidad de supervisores
+	SUPERVISOR(2),
+	//Cantidad de directores
+	DIRECTOR(1),
+	//Cantidad de llamadas
+	CALL(10);
 
-	OPERATOR("Operator",7),
-	SUPERVISOR("Supervisor",2),
-	DIRECTOR("Director",1),
-	CALL("Calls", 10);
-
-	private String description;	
+	//Atributo cantidad
 	private int quantity;
 
-	private Property(String description, int quantity) {
-		this.description= description;
+	//Constructor del enum
+	private Property(int quantity) {
 		this.quantity  = quantity;
 	}
 
-	public String getDescription() {
-		return description;
-	}
+	/*
+	 * Getters
+	 */	
 	public int getQuantity() {
 		return quantity;
 	}

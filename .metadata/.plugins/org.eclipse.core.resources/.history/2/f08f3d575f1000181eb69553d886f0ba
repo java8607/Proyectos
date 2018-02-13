@@ -1,0 +1,11 @@
+package com.almundo.dto;
+
+public class Supervisor extends Employee{
+
+	public Supervisor(int name) {
+		setId(name);
+		setName("Supervisor "+name);
+		setAvaible(true);
+	}	
+
+}

@@ -1,0 +1,32 @@
+package com.almundo.callcenter;
+import static org.junit.Assert.*;
+
+import com.almundo.callcenter.CallSimulator;
+import com.almundo.callcenter.EmployeeFactory;
+import com.almundo.utils.Property;
+
+public class Test {
+
+	@org.junit.Test
+	public void callsDoneVsAttended() {
+		Integer calls = Property.CALL.getQuantity();
+		Integer totalCalls = 0;
+
+		new CallSimulator();
+
+		for (int i = 0; i < Property.OPERATOR.getQuantity(); i++) {
+			totalCalls += EmployeeFactory.operators.get(i).getCalls();
+		}
+
+		for (int i = 0; i < Property.SUPERVISOR.getQuantity(); i++) {
+			totalCalls += EmployeeFactory.operators.get(i).getCalls();
+		}
+
+		for (int i = 0; i < Property.DIRECTOR.getQuantity(); i++) {
+			totalCalls += EmployeeFactory.operators.get(i).getCalls();
+		}
+
+		assertEquals(calls, totalCalls);
+	}
+
+}

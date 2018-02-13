@@ -1,0 +1,14 @@
+package com.almundo.dto;
+
+/**
+ * 
+ * @author Ing. Oscar Rodríguez
+ *
+ */
+public class Director extends Employee {
+
+	public Director(int name) {
+		setName("Director " + name);
+		setAvaible(true);
+	}
+}

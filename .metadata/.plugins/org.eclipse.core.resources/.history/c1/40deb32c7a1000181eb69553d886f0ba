@@ -1,0 +1,33 @@
+package com.almundo.callcenter;
+
+import com.almundo.utils.Property;
+
+
+/**
+ * @author Ing. Oscar Rodríguez
+ * @version 1.0
+ * Esta clase contiene el metodo main
+ *
+ */
+public class App {
+	/**
+	 * Metodo main encargado de disparar nuestra aplicación
+	 * @param args
+	 */
+	public static void main(String args[]) {
+		new CallSimulator();
+		int totalCalls=0;
+		for (int i = 0; i < Property.OPERATOR.getQuantity(); i++) {
+			totalCalls += EmployeeFactory.operators.get(i).getCalls();
+		}
+
+		for (int i = 0; i < Property.SUPERVISOR.getQuantity(); i++) {
+			totalCalls += EmployeeFactory.supervisors.get(i).getCalls();
+		}
+
+		for (int i = 0; i < Property.DIRECTOR.getQuantity(); i++) {
+			totalCalls += EmployeeFactory.directors.get(i).getCalls();
+		}
+		System.out.println(totalCalls);
+	}
+}

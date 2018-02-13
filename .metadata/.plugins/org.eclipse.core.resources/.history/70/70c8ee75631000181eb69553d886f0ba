@@ -1,0 +1,16 @@
+package com.almundo.callcenter;
+
+
+/**
+ * @author Ing. Oscar Rodríguez
+ *
+ */
+public class App {
+	/**
+	 * Metodo main encargado de disparar nuestra aplicación
+	 * @param args
+	 */
+	public static void main(String args[]) {
+		new CallSimulator();
+	}
+}

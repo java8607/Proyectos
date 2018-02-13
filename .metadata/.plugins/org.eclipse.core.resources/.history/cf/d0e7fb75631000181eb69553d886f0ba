@@ -1,0 +1,27 @@
+package com.almundo.dto;
+
+/**
+ * @author Ing. Oscar Rodríguez
+ * Este Pojo define las caracteristicas comunes entre los empleados del Call Center
+ */
+public class Employee {
+	
+	private String name;	
+	private boolean avaible;
+	
+	public Employee() {
+	}
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public boolean isAvaible() {
+		return avaible;
+	}
+	public void setAvaible(boolean avaible) {
+		this.avaible = avaible;
+	}
+}

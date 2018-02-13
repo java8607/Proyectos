@@ -1,0 +1,7 @@
+package com.almundo.callcenter;
+
+import junit.framework.TestCase;
+
+public class DispatcherTest extends TestCase {
+
+}

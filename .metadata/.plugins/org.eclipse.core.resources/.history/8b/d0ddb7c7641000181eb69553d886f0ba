@@ -1,0 +1,14 @@
+package com.almundo.dto;
+
+/**
+ * @author Ing. Oscar Rodríguez
+ * @version 1.0
+ */
+public class Supervisor extends Employee{
+
+	public Supervisor(int name) {
+		setName("Supervisor "+name);
+		setAvaible(true);
+	}	
+
+}
